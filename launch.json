@@ -1,0 +1,103 @@
+{
+    // 使用 IntelliSense 了解相关属性。
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "(gdb) Launch",
+                "type": "cppdbg",
+                "request": "launch",
+                "args": [],
+                "stopAtEntry": false,
+                "cwd": "${fileDirname}",
+                "environment": [],
+                "externalConsole": true,
+                "program": "", // Defining "program" in here just is prevent report "Missing property "program"".
+                //Properties defined in an operating system specific scope override properties defined in the global scope.
+                "windows": {
+                    "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                    "MIMode": "gdb",
+                    "miDebuggerPath": "gdb.exe",
+                    //"miDebuggerPath": "D:\\ProgramData\\mingw64\\bin\\gdb.exe",
+                    "setupCommands": [
+                        {
+                            "description": "Enable pretty-printing for gdb",
+                            "text": "-enable-pretty-printing",
+                            "ignoreFailures": true
+                        }
+                    ],
+                },
+                "linux": {
+                    "program": "${fileDirname}/${fileBasenameNoExtension}.out",
+                    "MIMode": "gdb",
+                    "miDebuggerPath": "/usr/bin/gdb",
+                    "setupCommands": [
+                        {
+                            "description": "Enable pretty-printing for gdb",
+                            "text": "-enable-pretty-printing",
+                            "ignoreFailures": true
+                        }
+                    ],
+                },
+                "preLaunchTask": "cpp_compile"
+            },
+            {
+                "name": "Python: Current File (Integrated Terminal)",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "console": "integratedTerminal",
+                "stopOnEntry": true
+            },
+            {
+                "name": "Python: Attach",
+                "type": "python",
+                "request": "attach",
+                "port": 5678,
+                "host": "localhost"
+            },
+            {
+                "name": "Python: Module",
+                "type": "python",
+                "request": "launch",
+                "module": "enter-your-module-name-here",
+                "console": "integratedTerminal"
+            },
+            {
+                "name": "Python: Django",
+                "type": "python",
+                "request": "launch",
+                "program": "${workspaceFolder}/manage.py",
+                "console": "integratedTerminal",
+                "args": [
+                    "runserver",
+                    "--noreload",
+                    "--nothreading"
+                ],
+                "django": true
+            },
+            {
+                "name": "Python: Flask",
+                "type": "python",
+                "request": "launch",
+                "module": "flask",
+                "env": {
+                    "FLASK_APP": "app.py"
+                },
+                "args": [
+                    "run",
+                    "--no-debugger",
+                    "--no-reload"
+                ],
+                "jinja": true
+            },
+            {
+                "name": "Python: Current File (External Terminal)",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "console": "externalTerminal"
+            }
+        ]
+}
